@@ -1,5 +1,5 @@
 import { SFCDescriptor, BindingMetadata } from '@vue/compiler-sfc'
-import * as defaultCompiler from '@vue/compiler-sfc'
+import * as defaultCompiler from '@vue/compiler-sfc/dist/compiler-sfc.esm-browser'
 
 import base64 from 'crypto-js/enc-base64'
 import sha256 from 'crypto-js/sha256'
@@ -40,7 +40,7 @@ export async function compileFile({ filename, code, compiled }: File) {
   if (
     (descriptor.script && descriptor.script.lang) ||
     (descriptor.scriptSetup && descriptor.scriptSetup.lang) ||
-    descriptor.styles.some(s => s.lang) ||
+    descriptor.styles.some((s: any) => s.lang) ||
     (descriptor.template && descriptor.template.lang)
   ) {
     store.errors = [
@@ -49,7 +49,7 @@ export async function compileFile({ filename, code, compiled }: File) {
     return
   }
 
-  const hasScoped = descriptor.styles.some(s => s.scoped)
+  const hasScoped = descriptor.styles.some((s: any) => s.scoped)
   let clientCode = ''
   let ssrCode = ''
 

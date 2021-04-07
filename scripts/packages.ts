@@ -17,14 +17,14 @@ export const packages: PackageManifest[] = [
     description: 'Compile Vue SFC File to ES Modules.',
     external: [
       'vue',
-      '@vue/compiler-sfc',
+      '@vue/compiler-sfc/dist/compiler-sfc.esm-browser',
       '@vue/shared',
       'crypto-js/enc-base64',
       'crypto-js/sha256'
     ],
     globals: {
       'vue': 'Vue',
-      '@vue/compiler-sfc': 'defaultCompiler',
+      '@vue/compiler-sfc/dist/compiler-sfc.esm-browser': 'defaultCompiler',
       '@vue/shared': 'shared',
       'crypto-js/enc-base64': 'cryptoBase64',
       'crypto-js/sha256': 'cryptoSha256'

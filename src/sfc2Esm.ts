@@ -1,17 +1,28 @@
-import { store, File } from './store'
-import { MAIN_FILE } from './sfcCompiler'
 import {
   babelParse,
   MagicString,
   walk,
   walkIdentifiers
-} from '@vue/compiler-sfc'
+} from '@vue/compiler-sfc/dist/compiler-sfc.esm-browser'
 import { babelParserDefaultPlugins } from '@vue/shared'
 import { ExportSpecifier, Identifier, Node, ObjectProperty } from '@babel/types'
-import { compileFile } from './sfcCompiler'
+
+import { store, File } from './store'
+import { MAIN_FILE, compileFile } from './sfcCompiler'
 
 export async function compileModules() {
   const modules = await processFile(store.files[MAIN_FILE])
+  const styles = [
+    'color: white',
+    'background: #42b983',
+    'margin-left: 4px',
+    'padding: 2px 4px',
+    'border-radius: 2px'
+  ].join(';')
+  console.log(
+    `Successfully compiled:%c${modules.length} modules.`,
+    styles
+  )
   return modules.reverse()
 }
 
@@ -177,7 +188,7 @@ app.mount('#app')`.trim()
   // 3. convert references to import bindings
   for (const node of ast) {
     if (node.type === 'ImportDeclaration') continue
-    walkIdentifiers(node, (id, parent, parentStack) => {
+    walkIdentifiers(node, (id: any, parent: any, parentStack: any) => {
       const binding = idToImportMap.get(id.name)
       if (!binding) {
         return
