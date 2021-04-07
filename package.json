@@ -1,0 +1,60 @@
+{
+  "name": "sfc2esm",
+  "description": "Compile Vue SFC File to ES Modules.",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "nodemon --watch './**/*.ts' --exec 'ts-node' examples/index.ts",
+    "build": "rollup -c rollup.config.js"
+  },
+  "main": "lib/index.cjs.js",
+  "module": "lib/index.esm.js",
+  "unpkg": "lib/index.umd.min.js",
+  "jsdelivr": "lib/index.umd.min.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib",
+    "README.md"
+  ],
+  "type": "module",
+  "dependencies": {
+    "@vue/compiler-sfc": "^3.0.0",
+    "crypto-js": "^4.0.0",
+    "vue": "^3.0.0"
+  },
+  "devDependencies": {
+    "@rollup/plugin-replace": "^2.4.2",
+    "@types/crypto-js": "^4.0.1",
+    "esbuild": "^0.11.5",
+    "esbuild-register": "^2.3.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "esm": "^3.2.25",
+    "nodemon": "^2.0.7",
+    "rollup": "^2.44.0",
+    "rollup-plugin-dts": "^3.0.1",
+    "rollup-plugin-filesize": "^9.1.1",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-typescript2": "^0.30.0",
+    "ts-node": "^9.1.1",
+    "typescript": "~4.1.5"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "parserOptions": {
+      "ecmaVersion": 2020
+    },
+    "rules": {}
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}
