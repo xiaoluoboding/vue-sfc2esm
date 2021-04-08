@@ -5,6 +5,7 @@ const welcomeCode = `
 <template>
   <h1>{{ msg }}</h1>
 </template>
+
 <script setup>
 const msg = 'Hello World!'
 </script>
@@ -25,7 +26,7 @@ export class File {
   }
 }
 
-interface Store {
+export interface Store {
   files: Record<string, File>
   activeFilename: string
   readonly activeFile: File

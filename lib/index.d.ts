@@ -27,4 +27,4 @@ declare const MAIN_FILE = "App.vue";
 declare const COMP_IDENTIFIER = "__sfc__";
 declare function compileFile({ filename, code, compiled }: File): Promise<void>;
 
-export { COMP_IDENTIFIER, File, MAIN_FILE, addFile, compileFile, compileModules, deleteFile, exportFiles, setActive, store };
+export { COMP_IDENTIFIER, File, MAIN_FILE, Store, addFile, compileFile, compileModules, deleteFile, exportFiles, setActive, store };
