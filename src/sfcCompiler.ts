@@ -1,8 +1,7 @@
 import { SFCDescriptor, BindingMetadata } from '@vue/compiler-sfc'
 import * as defaultCompiler from '@vue/compiler-sfc/dist/compiler-sfc.esm-browser'
 
-import base64 from 'crypto-js/enc-base64'
-import sha256 from 'crypto-js/sha256'
+import * as Crypto from 'crypto'
 
 import { store, File } from './store'
 
@@ -222,6 +221,6 @@ function doCompileTemplate(
 }
 
 async function hashId(filename: string) {
-  const hashDigest = base64.stringify(sha256(filename)) // hash the message
+  const hashDigest = Crypto.createHash('sha256').update(filename).digest('base64') // hash the message
   return hashDigest.slice(0, 16)
 }

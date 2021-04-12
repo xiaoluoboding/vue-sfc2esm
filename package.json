@@ -4,8 +4,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "nodemon --watch './**/*.ts' --exec 'ts-node' examples/index.ts",
-    "build": "rollup -c rollup.config.js"
+    "dev": "NODE_ENV=development nodemon --watch './**/*.ts' --exec 'ts-node' examples/index.ts",
+    "build": "NODE_ENV=production rollup -c rollup.config.js"
   },
   "main": "lib/index.cjs.js",
   "module": "lib/index.esm.js",
@@ -19,12 +19,11 @@
   "type": "module",
   "dependencies": {
     "@vue/compiler-sfc": "^3.0.0",
-    "crypto-js": "^4.0.0",
     "vue": "^3.0.0"
   },
   "devDependencies": {
     "@rollup/plugin-replace": "^2.4.2",
-    "@types/crypto-js": "^4.0.1",
+    "cross-env": "^7.0.3",
     "esbuild": "^0.11.5",
     "esbuild-register": "^2.3.0",
     "eslint": "^6.7.2",
