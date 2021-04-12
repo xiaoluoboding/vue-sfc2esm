@@ -1,11 +1,11 @@
 import { SFCDescriptor, BindingMetadata } from '@vue/compiler-sfc'
-import * as defaultCompiler from '@vue/compiler-sfc/dist/compiler-sfc.esm-browser'
+// import * as defaultCompiler from '@vue/compiler-sfc/dist/compiler-sfc.esm-browser'
+import * as defaultCompiler from '@vue/compiler-sfc'
 
 import * as Crypto from 'crypto'
 
 import { store, File } from './store'
 
-export const MAIN_FILE = 'App.vue'
 export const COMP_IDENTIFIER = `__sfc__`
 
 /**

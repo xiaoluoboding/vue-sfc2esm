@@ -3,15 +3,16 @@ import {
   MagicString,
   walk,
   walkIdentifiers
-} from '@vue/compiler-sfc/dist/compiler-sfc.esm-browser'
+// } from '@vue/compiler-sfc/dist/compiler-sfc.esm-browser'
+} from '@vue/compiler-sfc'
 import { babelParserDefaultPlugins } from '@vue/shared'
 import { ExportSpecifier, Identifier, Node, ObjectProperty } from '@babel/types'
 
-import { store, File } from './store'
-import { MAIN_FILE, compileFile } from './sfcCompiler'
+import { store, File, APP_FILE, MAIN_CODE } from './store'
+import { compileFile } from './sfcCompiler'
 
 export async function compileModules() {
-  const modules = await processFile(store.files[MAIN_FILE])
+  const modules = await processFile(store.files[APP_FILE])
   const styles = [
     'color: white',
     'background: #42b983',
@@ -77,24 +78,9 @@ async function processFile(file: File, seen = new Set<File>()) {
     s.append(`\n${exportKey}(${moduleKey}, "${name}", () => ${local})`)
   }
 
-  function defineAmount () {
-    return `
-import { createApp as _createApp } from "vue"
-
-if (window.__app__) {
-  window.__app__.unmount()
-  document.getElementById('app').innerHTML = ''
-}
-
-document.getElementById('__sfc-styles').innerHTML = window.__css__
-const app = window.__app__ = _createApp(__modules__["${MAIN_FILE}"].default)
-app.config.errorHandler = e => console.error(e)
-app.mount('#app')`.trim()
-  }
-
   // 0. instantiate module
   s.prepend(
-    `window.__modules__ = {};\nwindow.__css__ = ''\n\nconst ${moduleKey} = __modules__[${
+    `window.__modules__ = {}\nwindow.__css__ = ''\n\nconst ${moduleKey} = __modules__[${
       JSON.stringify(file.filename)
     }] = { [Symbol.toStringTag]: "Module" }\n\n`
   )
@@ -241,7 +227,7 @@ app.mount('#app')`.trim()
     s.append(`\nwindow.__css__ += ${JSON.stringify(css)}`)
   }
 
-  const processed = [defineAmount(), s.toString()]
+  const processed = [MAIN_CODE, s.toString()]
   if (importedFiles.size) {
     for (const imported of importedFiles) {
       const fileList = await processFile(store.files[imported], seen)
