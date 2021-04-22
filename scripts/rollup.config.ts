@@ -82,7 +82,7 @@ const createOutputs = (arg: IOutput) => {
 
   return {
     banner: makeBanner(name),
-    file: `lib/index.${fileType}.js`,
+    file: `lib/${name}.${fileType}.js`,
     format,
     ...umdSettings,
     plugins
@@ -134,7 +134,7 @@ for (const { name, display, external = [], globals = {} } of activePackages) {
   configs.push({
     input: `src/index.ts`,
     output: {
-      file: `lib/index.d.ts`,
+      file: `lib/${pkg.name}.d.ts`,
       format: 'es'
     },
     plugins: [

@@ -8,11 +8,12 @@ import {
 import { babelParserDefaultPlugins } from '@vue/shared'
 import { ExportSpecifier, Identifier, Node, ObjectProperty } from '@babel/types'
 
-import { store, File, APP_FILE, MAIN_CODE } from './store'
+import { store, File, activeFilename, mainCode } from './store'
 import { compileFile } from './sfcCompiler'
 
-export async function compileModules() {
-  const modules = await processFile(store.files[APP_FILE])
+export async function compileModules(filename: string): Promise<Array<string>> {
+  if (filename !== activeFilename.value) return []
+  const modules = await processFile(store.files[filename])
   const styles = [
     'color: white',
     'background: #42b983',
@@ -227,7 +228,7 @@ async function processFile(file: File, seen = new Set<File>()) {
     s.append(`\nwindow.__css__ += ${JSON.stringify(css)}`)
   }
 
-  const processed = [MAIN_CODE, s.toString()]
+  const processed = [mainCode.value, s.toString()]
   if (importedFiles.size) {
     for (const imported of importedFiles) {
       const fileList = await processFile(store.files[imported], seen)
