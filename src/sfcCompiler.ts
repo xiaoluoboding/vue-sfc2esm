@@ -1,12 +1,12 @@
 import { SFCDescriptor, BindingMetadata } from '@vue/compiler-sfc'
-import * as defaultCompiler from '@vue/compiler-sfc/dist/compiler-sfc.esm-browser'
-// import * as defaultCompiler from '@vue/compiler-sfc'
+import * as defaultCompiler from '@vue/compiler-sfc/dist/compiler-sfc.esm-browser' // production use
+// import * as defaultCompiler from '@vue/compiler-sfc' // development use
 
 import { store, File } from './store'
 
-import { hashId } from './utils'
+import { generateHashId } from './utils'
 
-export const COMP_IDENTIFIER = `__sfc__`
+const COMP_IDENTIFIER = `__sfc__`
 
 /**
  * The default SFC compiler we are using is built from each commit
@@ -26,7 +26,7 @@ export async function compileFile({ filename, code, compiled }: File) {
     return
   }
 
-  const id = await hashId(filename)
+  const id = generateHashId(filename)
   const { errors, descriptor } = SFCCompiler.parse(code, {
     filename,
     sourceMap: true

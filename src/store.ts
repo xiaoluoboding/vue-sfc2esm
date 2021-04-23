@@ -36,7 +36,7 @@ const IMPORT_MAP_CODE = `
   }
 }`.trim()
 
-
+// Virtual Simple File System
 export class File {
   filename: string
   code: string
@@ -62,8 +62,7 @@ export interface Store {
 
 let files: Store['files'] = {}
 
-// const savedFiles = location.hash.slice(1)
-const savedFiles = undefined
+const savedFiles = ''
 if (savedFiles) {
   const saved = JSON.parse(atob(savedFiles))
   for (const filename in saved) {
@@ -89,7 +88,7 @@ export const store = reactive({
   errors: []
 }) as Store
 
-console.log(store.files)
+// console.log(store.files)
 
 watchEffect(() => compileFile(store.activeFile))
 
