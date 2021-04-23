@@ -22,8 +22,9 @@ export async function compileModules(filename: string): Promise<Array<string>> {
     'border-radius: 2px'
   ].join(';')
   console.log(
-    `Successfully compiled: %c${filename} to ES Modules.`,
-    styles
+    `Successfully compiled: %c${filename}%c to ES Modules.`,
+    styles,
+    ''
   )
   return modules.reverse()
 }
