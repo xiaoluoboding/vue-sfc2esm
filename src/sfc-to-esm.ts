@@ -9,7 +9,7 @@ import { babelParserDefaultPlugins } from '@vue/shared'
 import { ExportSpecifier, Identifier, Node, ObjectProperty } from '@babel/types'
 
 import { store, File, activeFilename, mainCode } from './store'
-import { compileFile } from './sfcCompiler'
+import { compileFile } from './sfc-compiler'
 
 export async function compileModules(filename: string): Promise<Array<string>> {
   if (filename !== activeFilename.value) return []

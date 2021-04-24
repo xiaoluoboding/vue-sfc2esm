@@ -1,17 +1,16 @@
 {
-  "name": "sfc2esm",
+  "name": "vue-sfc2esm",
   "description": "Compile Vue SFC File to ES Modules.",
   "version": "0.1.0",
-  "private": true,
   "scripts": {
     "dev": "NODE_ENV=development nodemon --watch './**/*.ts' --exec 'ts-node' examples/index.ts",
     "build": "NODE_ENV=production rollup -c rollup.config.js"
   },
-  "main": "lib/index.cjs.js",
-  "module": "lib/index.esm.js",
-  "unpkg": "lib/index.umd.min.js",
-  "jsdelivr": "lib/index.umd.min.js",
-  "types": "lib/index.d.ts",
+  "main": "lib/vue-sfc2esm.cjs.js",
+  "module": "lib/vue-sfc2esm.esm.js",
+  "unpkg": "lib/vue-sfc2esm.umd.min.js",
+  "jsdelivr": "lib/vue-sfc2esm.umd.min.js",
+  "types": "lib/vue-sfc2esm.d.ts",
   "files": [
     "lib",
     "README.md"
@@ -20,6 +19,12 @@
     "@vue/compiler-sfc": "^3.0.0",
     "vue": "^3.0.0"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xiaoluoboding/vue-sfc2esm.git"
+  },
+  "homepage": "https://github.com/xiaoluoboding/vue-sfc2esm",
+  "license": "MIT",
   "devDependencies": {
     "@rollup/plugin-replace": "^2.4.2",
     "cross-env": "^7.0.3",

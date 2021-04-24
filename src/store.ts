@@ -1,5 +1,5 @@
 import { computed, reactive, watchEffect } from 'vue'
-import { compileFile } from './sfcCompiler'
+import { compileFile } from './sfc-compiler'
 
 export const APP_FILE = `App.vue`
 export const MAIN_FILE = `main.js`

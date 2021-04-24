@@ -1,5 +1,5 @@
-export * from './sfc2Esm'
-export * from './sfcCompiler'
+export * from './sfc-to-esm'
+export * from './sfc-compiler'
 export {
   store,
   addFile,
