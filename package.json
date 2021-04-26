@@ -1,10 +1,11 @@
 {
   "name": "vue-sfc2esm",
   "description": "Compile Vue SFC File to ES Modules.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "scripts": {
     "dev": "NODE_ENV=development nodemon --watch './**/*.ts' --exec 'ts-node' examples/index.ts",
-    "build": "NODE_ENV=production rollup -c rollup.config.js"
+    "build": "NODE_ENV=production rollup -c rollup.config.js",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 1"
   },
   "main": "lib/vue-sfc2esm.cjs.js",
   "module": "lib/vue-sfc2esm.esm.js",
