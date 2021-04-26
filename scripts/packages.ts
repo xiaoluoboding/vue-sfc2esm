@@ -19,15 +19,13 @@ export const packages: PackageManifest[] = [
       'vue',
       '@vue/compiler-sfc',
       '@vue/compiler-sfc/dist/compiler-sfc.esm-browser',
-      '@vue/shared',
-      'crypto'
+      '@vue/shared'
     ],
     globals: {
       'vue': 'Vue',
       '@vue/compiler-sfc': 'sfcCompiler',
       '@vue/compiler-sfc/dist/compiler-sfc.esm-browser': 'sfcCompilerEsm',
-      '@vue/shared': 'shared',
-      'crypto': 'Crypto'
+      '@vue/shared': 'shared'
     }
   }
 ]

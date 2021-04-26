@@ -36,6 +36,13 @@ const IMPORT_MAP_CODE = `
   }
 }`.trim()
 
+interface FileCompiled {
+  js: string,
+  css: string,
+  ssr: string,
+  errors: Array<string | Error>
+}
+
 // Virtual Simple File System
 export class File {
   filename: string
@@ -43,8 +50,9 @@ export class File {
   compiled = {
     js: '',
     css: '',
-    ssr: ''
-  }
+    ssr: '',
+    errors: ['']
+  } as FileCompiled
 
   constructor(filename: string, code = '') {
     this.filename = filename
@@ -57,7 +65,7 @@ export interface Store {
   activeFilename: string
   readonly activeFile: File
   readonly importMap: string | undefined
-  errors: (string | Error)[]
+  errors: Array<string | Error>
 }
 
 let files: Store['files'] = {}
@@ -116,18 +124,22 @@ export function setActive (filename: string, code: string) {
   store.activeFile.code = code
 }
 
+export function recordFileErrors (errors: Array<string | Error>) {
+  store.activeFile.compiled.errors = errors
+}
+
 export function addFile (filename: string, code: string) {
   if (
     !filename.endsWith('.vue') &&
     !filename.endsWith('.js') &&
     filename !== 'import-map.json'
   ) {
-    store.errors = [`Sandbox only supports *.vue, *.js files or import-map.json.`]
+    recordFileErrors(['Sandbox only supports *.vue, *.js files or import-map.json.'])
     return
   }
 
   if (filename in store.files) {
-    store.errors = [`File "${filename}" already exists.`]
+    recordFileErrors([`File "${filename}" already exists.`])
     return
   }
 
@@ -144,7 +156,7 @@ export function addFile (filename: string, code: string) {
 
 export function changeFile (filename: string, code: string) {
   if (!(filename in store.files)) {
-    store.errors = [`File "${filename}" is not exists.`]
+    recordFileErrors([`File "${filename}" is not exists.`])
     return
   }
   const file = store.files[filename]

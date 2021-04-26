@@ -5,6 +5,6 @@ export {
   addFile,
   changeFile,
   deleteFile,
-  exportFiles
+  exportFiles,
+  recordFileErrors
 } from './store'
-export * from './utils'

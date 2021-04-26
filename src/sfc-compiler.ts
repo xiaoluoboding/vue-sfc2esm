@@ -2,9 +2,7 @@ import { SFCDescriptor, BindingMetadata } from '@vue/compiler-sfc'
 import * as defaultCompiler from '@vue/compiler-sfc/dist/compiler-sfc.esm-browser' // production use
 // import * as defaultCompiler from '@vue/compiler-sfc' // development use
 
-import { store, File } from './store'
-
-import { generateHashId } from './utils'
+import { File, recordFileErrors } from './store'
 
 const COMP_IDENTIFIER = `__sfc__`
 
@@ -16,23 +14,24 @@ let SFCCompiler: typeof defaultCompiler = defaultCompiler
 
 export async function compileFile({ filename, code, compiled }: File) {
   if (!code.trim()) {
-    store.errors = []
+    compiled.errors = []
     return
   }
 
   if (!filename.endsWith('.vue')) {
     compiled.js = compiled.ssr = code
-    store.errors = []
+    compiled.errors = []
     return
   }
 
-  const id = generateHashId(filename)
+  const id = Buffer.from(filename).toString('base64')
+  console.log(id)
   const { errors, descriptor } = SFCCompiler.parse(code, {
     filename,
     sourceMap: true
   })
   if (errors.length) {
-    store.errors = errors
+    compiled.errors = errors
     return
   }
 
@@ -42,7 +41,7 @@ export async function compileFile({ filename, code, compiled }: File) {
     descriptor.styles.some((s: any) => s.lang) ||
     (descriptor.template && descriptor.template.lang)
   ) {
-    store.errors = [
+    compiled.errors = [
       'lang="x" pre-processors are not supported in the in-browser playground.'
     ]
     return
@@ -117,7 +116,7 @@ export async function compileFile({ filename, code, compiled }: File) {
   let css = ''
   for (const style of descriptor.styles) {
     if (style.module) {
-      store.errors = [`<style module> is not supported in the playground.`]
+      compiled.errors = [`<style module> is not supported in the playground.`]
       return
     }
 
@@ -132,7 +131,7 @@ export async function compileFile({ filename, code, compiled }: File) {
       // postcss uses pathToFileURL which isn't polyfilled in the browser
       // ignore these errors for now
       if (!styleResult.errors[0].message.includes('pathToFileURL')) {
-        store.errors = styleResult.errors
+        compiled.errors = styleResult.errors
       }
       // proceed even if css compile errors
     } else {
@@ -146,7 +145,7 @@ export async function compileFile({ filename, code, compiled }: File) {
   }
 
   // clear errors
-  store.errors = []
+  compiled.errors = []
 }
 
 function doCompileScript(
@@ -178,7 +177,7 @@ function doCompileScript(
         SFCCompiler.rewriteDefault(compiledScript.content, COMP_IDENTIFIER)
       return [code, compiledScript.bindings]
     } catch (e) {
-      store.errors = [e]
+      recordFileErrors([e])
       return
     }
   } else {
@@ -206,7 +205,7 @@ function doCompileTemplate(
     }
   })
   if (templateResult.errors.length) {
-    store.errors = templateResult.errors
+    recordFileErrors(templateResult.errors)
     return
   }
 
