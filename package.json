@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/xiaoluoboding/vue-sfc2esm",
   "license": "MIT",
+  "sideEffects": false,
   "devDependencies": {
     "@rollup/plugin-replace": "^2.4.2",
     "cross-env": "^7.0.3",
