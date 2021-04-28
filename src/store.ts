@@ -128,6 +128,13 @@ export function recordFileErrors (errors: Array<string | Error>) {
   store.activeFile.compiled.errors = errors
 }
 
+export function hasFile (filename: string) {
+  if (!(filename in store.files)) {
+    recordFileErrors([`File "${filename}" is not exists.`])
+    return
+  }
+}
+
 export function addFile (filename: string, code: string) {
   if (
     !filename.endsWith('.vue') &&
@@ -138,10 +145,7 @@ export function addFile (filename: string, code: string) {
     return
   }
 
-  if (filename in store.files) {
-    recordFileErrors([`File "${filename}" already exists.`])
-    return
-  }
+  hasFile(filename)
 
   const file = (store.files[filename] = new File(filename))
 
@@ -155,20 +159,25 @@ export function addFile (filename: string, code: string) {
 }
 
 export function changeFile (filename: string, code: string) {
-  if (!(filename in store.files)) {
-    recordFileErrors([`File "${filename}" is not exists.`])
-    return
-  }
+  hasFile(filename)
+
   const file = store.files[filename]
 
   setActive(file.filename, code)
 }
 
-export function deleteFile (filename: string) {
-  if (confirm(`Are you sure you want to delete ${filename}?`)) {
+export function deleteFile (filename: string, withConfirm?: boolean) {
+  hasFile(filename)
+
+  const doDelete = () => {
     if (store.activeFilename === filename) {
       store.activeFilename = APP_FILE
     }
     delete store.files[filename]
   }
+  if (withConfirm && confirm(`Are you sure you want to delete ${filename}?`)) {
+    doDelete()
+    return
+  }
+  doDelete()
 }
