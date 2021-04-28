@@ -1,3 +1,13 @@
+## [0.1.2](https://github.com/xiaoluoboding/vue-sfc2esm/compare/v0.1.1...v0.1.2) (2021-04-28)
+
+
+### Features
+
+* add code comment ([345f5b5](https://github.com/xiaoluoboding/vue-sfc2esm/commit/345f5b5e2f56d05379399bdaea949ae7ee797fea))
+* make deleteFile function could without confirm ([fa3fd42](https://github.com/xiaoluoboding/vue-sfc2esm/commit/fa3fd422b495b2b80aae03a334e93258e266aa48))
+
+
+
 ## [0.1.1](https://github.com/xiaoluoboding/vue-sfc2esm/compare/v0.1.0...v0.1.1) (2021-04-26)
 
 
@@ -7,11 +17,7 @@
 
 
 
-## [0.1.1](https://github.com/xiaoluoboding/vue-sfc2esm/compare/v0.1.0...v0.1.1) (2021-04-26)
-
-
-
-## 0.1.1 (2021-04-26)
+# [0.1.0](https://github.com/xiaoluoboding/vue-sfc2esm/compare/5e18fb5f646bbab738a87996918b226d19bed5bc...v0.1.0) (2021-04-24)
 
 
 ### Features
