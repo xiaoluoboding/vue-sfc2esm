@@ -36,6 +36,9 @@ const IMPORT_MAP_CODE = `
   }
 }`.trim()
 
+/**
+ * Record the code & errors when a sfc file has been compiled.
+ */
 interface FileCompiled {
   js: string,
   css: string,
@@ -43,7 +46,9 @@ interface FileCompiled {
   errors: Array<string | Error>
 }
 
-// Virtual Simple File System
+/**
+ * Simple Virtual File System
+ */
 export class File {
   filename: string
   code: string
@@ -60,6 +65,9 @@ export class File {
   }
 }
 
+/**
+ * `vue-sfc2esm` built-in store.
+ */
 export interface Store {
   files: Record<string, File>
   activeFilename: string
@@ -111,6 +119,11 @@ for (const file in store.files) {
 
 export const encodeFiles = () => btoa(JSON.stringify(exportFiles()))
 
+/**
+ * Export the files code.
+ *
+ * @returns exported
+ */
 export function exportFiles () {
   const exported: Record<string, string> = {}
   for (const filename in store.files) {
@@ -124,10 +137,20 @@ export function setActive (filename: string, code: string) {
   store.activeFile.code = code
 }
 
+/**
+ * Record File errors when compiling file.
+ *
+ * @param errors
+ */
 export function recordFileErrors (errors: Array<string | Error>) {
   store.activeFile.compiled.errors = errors
 }
 
+/**
+ * Check whether has a filename in store.
+ *
+ * @param filename
+ */
 export function hasFile (filename: string) {
   if (!(filename in store.files)) {
     recordFileErrors([`File "${filename}" is not exists.`])
@@ -135,6 +158,12 @@ export function hasFile (filename: string) {
   }
 }
 
+/**
+ * Add a file into the store, ready for compilation.
+ *
+ * @param filename
+ * @param code
+ */
 export function addFile (filename: string, code: string) {
   if (
     !filename.endsWith('.vue') &&
@@ -158,6 +187,12 @@ export function addFile (filename: string, code: string) {
   setActive(filename, file.code)
 }
 
+/**
+ * Change the file code, It will trigger `compileFile` action.
+ *
+ * @param filename
+ * @param code
+ */
 export function changeFile (filename: string, code: string) {
   hasFile(filename)
 
@@ -166,6 +201,12 @@ export function changeFile (filename: string, code: string) {
   setActive(file.filename, code)
 }
 
+/**
+ * Delete the file in the store. with or without confirmation.
+ *
+ * @param filename
+ * @param withConfirm
+ */
 export function deleteFile (filename: string, withConfirm?: boolean) {
   hasFile(filename)
 
@@ -175,9 +216,11 @@ export function deleteFile (filename: string, withConfirm?: boolean) {
     }
     delete store.files[filename]
   }
+
   if (withConfirm && confirm(`Are you sure you want to delete ${filename}?`)) {
     doDelete()
     return
   }
+
   doDelete()
 }

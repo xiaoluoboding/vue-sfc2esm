@@ -12,6 +12,11 @@ const COMP_IDENTIFIER = `__sfc__`
  */
 let SFCCompiler: typeof defaultCompiler = defaultCompiler
 
+/**
+ * Compile the `activeFile` in the store. It will change the File.compiled info.
+ *
+ * @param File
+ */
 export async function compileFile({ filename, code, compiled }: File) {
   if (!code.trim()) {
     compiled.errors = []

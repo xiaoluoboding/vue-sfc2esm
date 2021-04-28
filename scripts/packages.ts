@@ -13,8 +13,8 @@ export interface PackageManifest {
 export const packages: PackageManifest[] = [
   {
     name: 'vue-sfc2esm',
-    display: 'VueSFC2Esm',
-    description: 'Compile Vue SFC File to ES Modules.',
+    display: 'VueSFC2ESM',
+    description: 'Transpiled Vue SFC File to ES Modules.',
     external: [
       'vue',
       '@vue/compiler-sfc',

@@ -11,6 +11,11 @@ import { ExportSpecifier, Identifier, Node, ObjectProperty } from '@babel/types'
 import { store, File, activeFilename, mainCode } from './store'
 import { compileFile } from './sfc-compiler'
 
+/**
+ * Transpiled Vue SFC File to ES modules with `@vue/compiler-sfc`.
+ *
+ * @param filename
+ */
 export async function compileModules(filename: string): Promise<Array<string>> {
   if (filename !== activeFilename.value) return []
   const modules = await processFile(store.files[filename])
