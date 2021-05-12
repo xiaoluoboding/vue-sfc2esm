@@ -1,4 +1,13 @@
-## [0.1.2](https://github.com/xiaoluoboding/vue-sfc2esm/compare/v0.1.1...v0.1.2) (2021-04-28)
+## [0.1.3](https://github.com/xiaoluoboding/vue-sfc2esm/compare/v0.1.2...v0.1.3) (2021-05-12)
+
+
+### Bug Fixes
+
+* fix filename too lang can not set to element attribute name error ([88ebe08](https://github.com/xiaoluoboding/vue-sfc2esm/commit/88ebe0843538798111ca1dc4621d8195e46a2488))
+
+
+
+## [0.1.2](https://github.com/xiaoluoboding/vue-sfc2esm/compare/v0.1.1...v0.1.2) (2021-04-29)
 
 
 ### Features
