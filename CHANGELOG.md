@@ -1,3 +1,12 @@
+## [0.1.4](https://github.com/xiaoluoboding/vue-sfc2esm/compare/v0.1.3...v0.1.4) (2021-05-12)
+
+
+### Bug Fixes
+
+* use production mode ([1642c37](https://github.com/xiaoluoboding/vue-sfc2esm/commit/1642c372cd1a782bf0c4b5d352457dff6833efdd))
+
+
+
 ## [0.1.3](https://github.com/xiaoluoboding/vue-sfc2esm/compare/v0.1.2...v0.1.3) (2021-05-12)
 
 
