@@ -26,6 +26,12 @@ export const WELCOME_CODE = `<template>
 <script setup>
 const msg = 'Hello World!'
 </script>
+
+<style scoped>
+h1 {
+  font-size: 2em;
+}
+</style>
 `.trim()
 
 export const MAIN_CODE = getMainCode(APP_FILE)

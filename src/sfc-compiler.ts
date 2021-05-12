@@ -1,6 +1,6 @@
 import { SFCDescriptor, BindingMetadata } from '@vue/compiler-sfc'
-import * as defaultCompiler from '@vue/compiler-sfc/dist/compiler-sfc.esm-browser' // production use
-// import * as defaultCompiler from '@vue/compiler-sfc' // development use
+// import * as defaultCompiler from '@vue/compiler-sfc/dist/compiler-sfc.esm-browser' // production use
+import * as defaultCompiler from '@vue/compiler-sfc' // development use
 
 import { File, recordFileErrors } from './store'
 
@@ -29,12 +29,12 @@ export async function compileFile({ filename, code, compiled }: File) {
     return
   }
 
-  const id = Buffer.from(filename).toString('base64')
-  console.log(id)
+  const id = Buffer.from(filename).toString('base64').slice(0, 16)
   const { errors, descriptor } = SFCCompiler.parse(code, {
     filename,
     sourceMap: true
   })
+  // console.log(descriptor)
   if (errors.length) {
     compiled.errors = errors
     return
