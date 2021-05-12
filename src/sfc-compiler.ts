@@ -1,6 +1,6 @@
 import { SFCDescriptor, BindingMetadata } from '@vue/compiler-sfc'
-// import * as defaultCompiler from '@vue/compiler-sfc/dist/compiler-sfc.esm-browser' // production use
-import * as defaultCompiler from '@vue/compiler-sfc' // development use
+import * as defaultCompiler from '@vue/compiler-sfc/dist/compiler-sfc.esm-browser' // production use
+// import * as defaultCompiler from '@vue/compiler-sfc' // development use
 
 import { File, recordFileErrors } from './store'
 
