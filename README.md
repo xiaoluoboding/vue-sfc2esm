@@ -1,19 +1,17 @@
-<h2 align="center">Vue SFC To ES Modules</h2>
-<br>
+<h1 align="center">Vue SFC To ES Modules</h1>
 <div align="center">
 
 <p align="center">
-  Transpiled Vue <strong>SFC File</strong> to <strong>ES modules</strong>.
+  Transpiled <strong>Vue SFC File</strong> to <strong>ES modules</strong>.
 </p>
 
 <br>
 
 [![NPM][npmBadge]][npmUrl]
 [![NPM Download][npmDtBadge]][npmDtUrl]
-<!-- [![Minzipped Size][bundlePhobiaBadge]][bundlePhobiaUrl] -->
 [![License][licenseBadge]][licenseUrl]
+<!-- [![Minzipped Size][bundlePhobiaBadge]][bundlePhobiaUrl] -->
 
-<br>
 
 [npmBadge]:https://img.shields.io/npm/v/vue-sfc2esm.svg?maxAge=2592000
 [npmUrl]:https://www.npmjs.com/package/vue-sfc2esm@next
