@@ -1,6 +1,33 @@
-# Vue SFC To ES Modules
+<h2 align="center">Vue SFC To ES Modules</h2>
+<br>
+<div align="center">
 
-> Transpiled Vue SFC File to ES modules.
+<p align="center">
+  Transpiled Vue <strong>SFC File</strong> to <strong>ES modules</strong>.
+</p>
+
+<br>
+
+[![NPM][npmBadge]][npmUrl]
+[![NPM Download][npmDtBadge]][npmDtUrl]
+<!-- [![Minzipped Size][bundlePhobiaBadge]][bundlePhobiaUrl] -->
+[![License][licenseBadge]][licenseUrl]
+
+<br>
+
+[npmBadge]:https://img.shields.io/npm/v/vue-sfc2esm.svg?maxAge=2592000
+[npmUrl]:https://www.npmjs.com/package/vue-sfc2esm@next
+
+[npmDtBadge]:https://img.shields.io/npm/dt/vue-sfc2esm.svg
+[npmDtUrl]:https://www.npmjs.com/package/vue-sfc2esm
+
+[licenseBadge]:https://img.shields.io/badge/license-MIT-blue.svg
+[licenseUrl]:https://raw.githubusercontent.com/vueblocks/vue-sfc2esm/master/LICENSE
+
+<!-- [bundlePhobiaBadge]:https://badgen.net/bundlephobia/minzip/vue-sfc2esm
+[bundlePhobiaUrl]:https://bundlephobia.com/result?p=vue-sfc2esm -->
+
+</div>
 
 ## ✨ Features
 
