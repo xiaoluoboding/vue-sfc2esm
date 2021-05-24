@@ -1,3 +1,5 @@
+![sfc2esm](sfc2esm.png)
+
 <h1 align="center">Vue SFC To ES Modules</h1>
 <div align="center">
 
@@ -11,7 +13,6 @@
 [![NPM Download][npmDtBadge]][npmDtUrl]
 [![License][licenseBadge]][licenseUrl]
 <!-- [![Minzipped Size][bundlePhobiaBadge]][bundlePhobiaUrl] -->
-
 
 [npmBadge]:https://img.shields.io/npm/v/vue-sfc2esm.svg?maxAge=2592000
 [npmUrl]:https://www.npmjs.com/package/vue-sfc2esm@next
