@@ -1,7 +1,7 @@
 {
   "name": "vue-sfc2esm",
   "description": "Transpiled Vue SFC File to ES Modules.",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon --watch './**/*.ts' --exec 'ts-node' examples/index.ts",
     "build": "cross-env NODE_ENV=production rollup -c rollup.config.js",

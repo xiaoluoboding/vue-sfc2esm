@@ -1,3 +1,12 @@
+## [0.1.5](https://github.com/xiaoluoboding/vue-sfc2esm/compare/v0.1.4...v0.1.5) (2021-05-28)
+
+
+### Bug Fixes
+
+* hashId function support node & browser both ([6cdc3c4](https://github.com/xiaoluoboding/vue-sfc2esm/commit/6cdc3c4af60db339e220041ec65f83299e08df13))
+
+
+
 ## [0.1.4](https://github.com/xiaoluoboding/vue-sfc2esm/compare/v0.1.3...v0.1.4) (2021-05-12)
 
 
