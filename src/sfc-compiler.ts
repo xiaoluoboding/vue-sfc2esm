@@ -29,7 +29,7 @@ export async function compileFile({ filename, code, compiled }: File) {
     return
   }
 
-  const id = Buffer.from(filename).toString('base64').slice(0, 16)
+  const id = await hashId(filename)
   const { errors, descriptor } = SFCCompiler.parse(code, {
     filename,
     sourceMap: true
@@ -222,4 +222,19 @@ function doCompileTemplate(
       `$1 ${fnName}`
     )}` + `\n${COMP_IDENTIFIER}.${fnName} = ${fnName}`
   )
+}
+
+async function hashId(filename) {
+  let hashHex = filename
+
+  if (typeof window !== 'undefined' && window.crypto.subtle) {
+    const msgUint8 = new TextEncoder().encode(filename) // encode as (utf-8) Uint8Array
+    const hashBuffer = await crypto.subtle.digest('SHA-256', msgUint8) // hash the message
+    const hashArray = Array.from(new Uint8Array(hashBuffer)) // convert buffer to byte array
+    hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('').slice(0, 8) // convert bytes to hex string
+  } else {
+    hashHex = Buffer.from(filename).toString('base64').slice(0, 8)
+  }
+
+  return hashHex
 }
