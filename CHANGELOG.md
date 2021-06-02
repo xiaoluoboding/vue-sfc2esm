@@ -1,3 +1,12 @@
+## [0.1.6](https://github.com/xiaoluoboding/vue-sfc2esm/compare/v0.1.5...v0.1.6) (2021-06-02)
+
+
+### Bug Fixes
+
+* remove get async hash id ([4f91338](https://github.com/xiaoluoboding/vue-sfc2esm/commit/4f91338c1f8695c15baf661605091556a066500b))
+
+
+
 ## [0.1.5](https://github.com/xiaoluoboding/vue-sfc2esm/compare/v0.1.4...v0.1.5) (2021-05-28)
 
 
